@@ -45,8 +45,8 @@ public class LoginServlet extends HttpServlet {
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?autoReconnect=true&useSSL=false", databaseUser, databasePassword);
             String uname = request.getParameter("uname");
     		String password = request.getParameter("password");
-    		String sql = "SELECT username FROM myflorabase.user WHERE uname = ? AND password=?";
-            PreparedStatement ps=con.prepareStatement(password)
+    		String sql = "SELECT username FROM myflorabase.user WHERE username = ? AND password=?";
+            PreparedStatement ps=con.prepareStatement(password);
             		
     		try (PreparedStatement statement = con.prepareStatement(sql)) {
             	statement.setString(1, uname);
@@ -57,8 +57,8 @@ public class LoginServlet extends HttpServlet {
             		rd.forward(request, response);
             	}
             	else {
-            		out.println("<font color=red size=20>Login Failed!!!<br>");
-            		out.println("<a href=login.jsp>Try AGAIN!! </a>");
+            		System.out.println("<font color=red size=20>Login Failed!!!<br>");
+            		System.out.println("<a href=login.jsp>Try AGAIN!! </a>");
             		
             	}
             }
