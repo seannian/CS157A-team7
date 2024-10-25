@@ -47,7 +47,7 @@ public class LoginServlet extends HttpServlet {
             String uname = request.getParameter("uname");
     		String password = request.getParameter("password");
     		String sql = "SELECT username FROM myflorabase.user WHERE username = ? AND password=?";
-            		
+           		
     		try (PreparedStatement statement = con.prepareStatement(sql)) {
             	statement.setString(1, uname);
             	statement.setString(2, password);
@@ -57,6 +57,7 @@ public class LoginServlet extends HttpServlet {
             		rd.forward(request, response);
             	}
             	else {
+
             		// TODO: Pop up an error box before redirect to login page
             		out.println("<font color=red size=20>Login Failed!!!<br>");
             		out.println("<a href=login.jsp>Try AGAIN!! </a>");

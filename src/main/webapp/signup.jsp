@@ -56,7 +56,7 @@
 					</div>
 					<label class="label prevent-select">OR</label>
 					<%--                need to redirect this to the login page --%>
-					<button class="major-button secondary-button" value="Log in">Log in</button>
+					<button class="major-button secondary-button" value="Log in" onclick="window.location.href='login.jsp'">Log in</button>
 				</div>
 			</form>
 		</div>
