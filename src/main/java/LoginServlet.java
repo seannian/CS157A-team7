@@ -1,6 +1,7 @@
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.sql.Blob;
 import java.sql.DriverManager;
@@ -37,8 +38,8 @@ public class LoginServlet extends HttpServlet {
 		
 		String databaseUser = "root";
 		String databasePassword = "root";
-		
-		// TODO connect to database
+		PrintWriter out = response.getWriter();
+		// Connect to database and compare user's input
 		try {
 			java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");
@@ -46,8 +47,7 @@ public class LoginServlet extends HttpServlet {
             String uname = request.getParameter("uname");
     		String password = request.getParameter("password");
     		String sql = "SELECT username FROM myflorabase.user WHERE username = ? AND password=?";
-            PreparedStatement ps=con.prepareStatement(password);
-            		
+           		
     		try (PreparedStatement statement = con.prepareStatement(sql)) {
             	statement.setString(1, uname);
             	statement.setString(2, password);
@@ -57,9 +57,12 @@ public class LoginServlet extends HttpServlet {
             		rd.forward(request, response);
             	}
             	else {
-            		System.out.println("<font color=red size=20>Login Failed!!!<br>");
-            		System.out.println("<a href=login.jsp>Try AGAIN!! </a>");
-            		
+
+            		// TODO: Pop up an error box before redirect to login page
+            		out.println("<font color=red size=20>Login Failed!!!<br>");
+            		out.println("<a href=login.jsp>Try AGAIN!! </a>");
+//            		RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+//            		rd.forward(request, response);
             	}
             }
             
