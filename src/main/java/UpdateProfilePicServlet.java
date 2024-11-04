@@ -26,7 +26,7 @@ public class UpdateProfilePicServlet extends HttpServlet {
 		Part newProfilePic = request.getPart("newProfilePic");
 		
 		String databaseUser = "root";
-		String databasePassword = "root";
+		String databasePassword = System.getenv("DB_PASSWORD");
 		try {
 			java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");

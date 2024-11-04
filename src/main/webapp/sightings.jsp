@@ -1,13 +1,10 @@
 <%@ page
 	import="java.util.Properties, java.io.FileInputStream, java.io.IOException"%>
 <%
-Properties properties = new Properties();
-try {
-	properties.load(new FileInputStream("../../eclipse-workspace/myFlorabase/config.properties"));
-} catch (IOException e) {
-	e.printStackTrace();
-}
-String apiKey = properties.getProperty("GOOGLE_MAPS_API_KEY");
+    String apiKey = System.getenv("GOOGLE_MAPS_API_KEY");
+    if (apiKey == null || apiKey.isEmpty()) {
+        System.out.println("GOOGLE_MAPS_API_KEY is not set.");
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -20,11 +17,12 @@ String apiKey = properties.getProperty("GOOGLE_MAPS_API_KEY");
 <link
 	href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/style.css">   
 </head>
 <body>
 	<div class="sightingsPage">
 		<jsp:include page="WEB-INF/components/header.jsp"></jsp:include>
+		
 		<div id="map"></div>
 
 		<!-- Modal Structure -->
@@ -95,10 +93,10 @@ String apiKey = properties.getProperty("GOOGLE_MAPS_API_KEY");
 			</div>
 		</div>
 	</div>
+	
 	<!-- Load the Google Maps JavaScript API -->
 	<script async
-		src="https://maps.googleapis.com/maps/api/js?key=<%=apiKey%>&callback=initMap">
-		
+		src="https://maps.googleapis.com/maps/api/js?key=<%= apiKey %>&callback=initMap">
 	</script>
 
 	<!-- Link to External JavaScript -->

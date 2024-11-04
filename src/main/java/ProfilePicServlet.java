@@ -28,7 +28,7 @@ public class ProfilePicServlet extends HttpServlet {
 //		User user = (User) curSession.getAttribute("loggedInUser");
 		String userId = request.getParameter("userId");
 		String databaseUser = "root";
-		String databasePassword = "root";
+		String databasePassword = System.getenv("DB_PASSWORD");
 		try {
 			java.sql.Connection con;
             Class.forName("com.mysql.jdbc.Driver");

@@ -1,4 +1,10 @@
 <%@ page import="java.sql.*"%>
+<%
+    String dbPassword = System.getenv("DB_PASSWORD");
+    if (dbPassword == null || dbPassword.isEmpty()) {
+        System.out.println("DB_PASSWORD is not set.");
+    }
+%>
 <html>
 <head>
 <title>Three Tier Architecture Demo</title>
@@ -15,7 +21,7 @@
 		<%
 		String user; // assumes database name is the same as username
 		user = "root";
-		String password = "root";
+		String password = dbPassword;
 		try {
 			java.sql.Connection con;
 			Class.forName("com.mysql.jdbc.Driver");

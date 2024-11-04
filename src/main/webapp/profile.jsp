@@ -1,5 +1,11 @@
 <%@ page
 	import="java.sql.*, com.example.User, com.example.MapPreference, com.example.Filter, java.util.List, java.util.ArrayList"%>
+<%
+    String dbPassword = System.getenv("DB_PASSWORD");
+    if (dbPassword == null || dbPassword.isEmpty()) {
+        System.out.println("DB_PASSWORD is not set.");
+    }
+%>
 <html>
 <head>
 <title>myFlorabase Profile</title>
@@ -16,7 +22,7 @@
 	User user = (User) curSession.getAttribute("loggedInUser"); */
 	String dUser; // assumes database name is the same as username
 	dUser = "root";
-	String pwd = "root";
+	String pwd = dbPassword;
 	User user = null;
 	MapPreference mp = null;
 	List<Filter> filters = new ArrayList<>();

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class RegisterDao {
     private String dburl="jdbc:mysql://localhost:3306/myflorabase";
     private String dbuname="root";
-    private String dbpwd="root";
+    private String dbpwd=System.getenv("DB_PASSWORD");
     private String dbdriver="com.mysql.jdbc.Driver";
     public void loadDriver(String dbdriver){
         try {
