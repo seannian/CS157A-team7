@@ -3,7 +3,7 @@ let clickedPosition;
 let AdvancedMarkerElement;
 const markersMap = new Map(); // Keeps track of markers by coordinates
 let infoWindow; // Single InfoWindow instance
-//let pollen = "TREE_UPI";
+let pollen = "TREE_UPI";
 
 class PollenMapType {
 	constructor(tileSize, apiKey) {
@@ -224,11 +224,10 @@ async function updateMapWithSightings() {
 	} 	
 	
 	// Commented out the pollen-related map overlay initialization
-	// const pollenMapType = new PollenMapType(new google.maps.Size(256, 256), apiKey);
-	// map.overlayMapTypes.insertAt(0, pollenMapType);
+	const pollenMapType = new PollenMapType(new google.maps.Size(256, 256), apiKey);
+	map.overlayMapTypes.insertAt(0, pollenMapType);
 
 	// Commented out pollen map type update listeners
-	/*
 	document.getElementById("tree").addEventListener("click", function() {
 		pollen = "TREE_UPI";
 		updatePollenMapType(map, apiKey);
@@ -244,7 +243,6 @@ async function updateMapWithSightings() {
 	document.getElementById("none").addEventListener("click", function() {
 		map.overlayMapTypes.removeAt(0);
 	});
-	*/
 }
 
 function getSearchQuery() {
