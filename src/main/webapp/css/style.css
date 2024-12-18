@@ -246,10 +246,12 @@ select:focus {
 	padding: 5px;
 }
 
-#signUpPageHeader {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
+#signUpPageContainer {
+	position: fixed;
+	top: 111px;
+	width: 100%;
+	height: calc(100% - 111px);
+	overflow: auto;
 }
 
 #signUpPage {

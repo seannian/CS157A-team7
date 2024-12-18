@@ -17,43 +17,44 @@
 	
 		<div id="header"><jsp:include
 				page="WEB-INF/components/header.jsp"></jsp:include></div>
-				
-		<div id="signUpPage">
-			<div>
-				<span id="signUpPageHeader" class="prevent-select"> <img
-					src='assets/myFlorabase_Logo_Text.svg' width="59" height="98" />
-					<h1 class="centerText">Log In</h1>
-				</span>
-
-				<form action="LoginServlet" method="post">
-					<div class="inputGroup textfield-label">
-						<label>Username</label> <span><input type="text"
-							name="uname" placeholder="Enter your username" required></span>
-					</div>
-					<div class="inputGroup textfield-label">
-						<label>Password</label> <input type="password" name="password"
-							placeholder="Enter your password" required>
-
-						<!-- //TODO: Add toggle to show password -->
-						<!-- <button type="button" id="toggle-psw"
-							class="toggle-button material-symbols-outlined"
-							onclick="togglePswVisibility()">visibility_off</button> -->
-					</div>
-					<div class="centerButtons">
-						<div id="logInButtons">
-							<button class="major-button primary-button" type="submit"
-								value="Log In">Log In</button>
+		
+		<div id="signUpPageContainer">	
+			<div id="signUpPage">
+				<div>
+					<span id="signUpPageHeader" class="prevent-select"> <img
+						src='assets/myFlorabase_Logo_Text.svg' width="59" height="98" />
+						<h1 class="centerText">Log In</h1>
+					</span>
+	
+					<form action="LoginServlet" method="post">
+						<div class="inputGroup textfield-label">
+							<label>Username</label> <span><input type="text"
+								name="uname" placeholder="Enter your username" required></span>
 						</div>
+						<div class="inputGroup textfield-label">
+							<label>Password</label> <input type="password" name="password"
+								placeholder="Enter your password" required>
+	
+							<!-- //TODO: Add toggle to show password -->
+							<!-- <button type="button" id="toggle-psw"
+								class="toggle-button material-symbols-outlined"
+								onclick="togglePswVisibility()">visibility_off</button> -->
+						</div>
+						<div class="centerButtons">
+							<div id="logInButtons">
+								<button class="major-button primary-button" type="submit"
+									value="Log In">Log In</button>
+							</div>
+						</div>
+					</form>
+					<div class="centerButtons">
+						<label class="label prevent-select">OR</label>
+						<button class="major-button secondary-button" value="Sign Up"
+							onclick="window.location.href='userRegister.jsp'">Sign Up</button>
 					</div>
-				</form>
-				<div class="centerButtons">
-					<label class="label prevent-select">OR</label>
-					<button class="major-button secondary-button" value="Sign Up"
-						onclick="window.location.href='userRegister.jsp'">Sign Up</button>
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Include the errorBox.jsp for displaying error messages when present -->
